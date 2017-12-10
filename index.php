@@ -5,8 +5,16 @@
 	// $handle = fopen($filename, 'r');
 	// $json = fread($handle, filesize($filename));
 	// fclose($handle);
+	
+	// параметр запроса: код города '472045' (Воронеж), '472761' (Волгодонск)
+	$town_id = '472761';
+	// параметр запроса: ключ
+	$app_id = 'f294621f6c60daf25b20b3127d170dc2';
+	// формируем строку запроса
+	$url = 'http://api.openweathermap.org/data/2.5/weather?id='.$town_id.'&APPID='.$app_id.'&units=metric';
 
-	$json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=472045&APPID=f294621f6c60daf25b20b3127d170dc2&units=metric');
+//	$json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=472045&APPID=f294621f6c60daf25b20b3127d170dc2&units=metric');
+	$json = file_get_contents($url);
 
 	$arr_api = json_decode($json, true);
 
@@ -16,7 +24,7 @@
 	// print_r($arr_api);
 	// echo '</pre>';
 
-	echo '<h1>Погода в Воронеже</h1>';
+	echo '<h1>Погода</h1>';
 
 	$temp_site = '<img src = "http://petropavlovskkamchatskiy.bezformata.ru/content/image249025097.jpg">';
 	echo $temp_site;
